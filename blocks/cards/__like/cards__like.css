@@ -1,0 +1,18 @@
+.cards__like {
+    margin: 0;
+    padding: 0;
+    min-width: 22px;
+    height: 19px;
+    background-image: url(../../../images/cards/card-like.svg);
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0;
+    cursor: pointer;
+    opacity: 1;
+    transition: all .3s;
+}
+
+.cards__like:hover {
+    opacity: .5;
+}
