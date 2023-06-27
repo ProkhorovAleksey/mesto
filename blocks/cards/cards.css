@@ -14,3 +14,10 @@
         grid-template-columns: repeat(2, 282px);
     }
 }
+
+@media screen and  (max-width: 600px) {
+    .cards {
+        padding-top: 36px;
+        grid-template-columns: 282px;
+    }
+}
