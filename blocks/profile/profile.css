@@ -8,6 +8,6 @@
     .profile {
         max-width: 282px;
         flex-direction: column;
-        margin: auto;
+        margin: 0 auto;
     }
 }

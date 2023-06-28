@@ -4,9 +4,14 @@
     border-radius: 10px;
     background: #FFFFFF;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
-    padding: 36px;
-    max-width: 430px;
-    width: 100%;
+    min-width: 430px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    .popup__content {
+        min-width: 282px;
+    }
 }

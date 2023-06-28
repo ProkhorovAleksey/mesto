@@ -9,7 +9,7 @@
     background-image: url(../../../images/profile/profile-change.svg);
     object-fit: cover;
     background-repeat: no-repeat;
-    background-color: #000;
+    background-color: transparent;
     background-position: center;
     cursor: pointer;
     border: 1px solid #fff;

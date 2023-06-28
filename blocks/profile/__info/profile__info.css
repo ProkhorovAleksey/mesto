@@ -2,8 +2,8 @@
     display: grid;
     position: relative;
     grid-template-columns: auto 24px;
-    grid-template-areas: "title button"
-                         "subtitle .";
+    grid-template-areas: "name button"
+                         "job .";
     row-gap: 16px;
     column-gap: 18px;
     align-items: end;
