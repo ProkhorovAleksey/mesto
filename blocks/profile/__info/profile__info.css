@@ -6,7 +6,7 @@
                          "job .";
     row-gap: 16px;
     column-gap: 18px;
-    align-items: end;
+    align-items: center;
     padding-left: 30px;
     max-width: 335px;
 }

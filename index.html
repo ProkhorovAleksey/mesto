@@ -19,7 +19,7 @@
         </a>
       </header>
       <main class="main">
-        <section class="profile" aria-label="профиль">
+        <section class="profile" aria-label="profile">
           <img
             class="profile__avatar"
             src="./images/profile/profile-image.jpg"
@@ -27,52 +27,53 @@
           />
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button aria-label="edit-button" class="profile__edit-button" type="button"></button>
             <p class="profile__job">Исследователь океана</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button aria-label="add-button" class="profile__add-button" type="button"></button>
         </section>
-        <section class="cards" aria-label="фотокарточки">
+
+        <section class="cards" aria-label="photocards">
             <article class="cards__item">
                 <img class="cards__image" src="./images/cards/card-grid-karachaevsk.jpg" alt="Картинка Карачаевск">
                 <div class="cards__caption">
                     <h2 class="cards__title">Карачаевск</h2>
-                    <button class="cards__like" type="button"></button>
+                    <button aria-label="like-button" class="cards__like" type="button"></button>
                 </div>
             </article>
             <article class="cards__item">
                 <img class="cards__image" src="./images/cards/card-grid-yelbrus.jpg" alt="Картинка Эльбрус">
                 <div class="cards__caption">
                     <h2 class="cards__title">Гора Эльбрус</h2>
-                    <button class="cards__like" type="button"></button>
+                    <button aria-label="like-button" class="cards__like" type="button"></button>
                 </div>
             </article>
             <article class="cards__item">
                 <img class="cards__image" src="./images/cards/card-grid-dombay.jpg" alt="Картинка Домбай">
                 <div class="cards__caption">
                     <h2 class="cards__title">Домбай</h2>
-                    <button class="cards__like" type="button"></button>
+                    <button aria-label="like-button" class="cards__like" type="button"></button>
                 </div>
             </article>
             <article class="cards__item">
                 <img class="cards__image" src="./images/cards/card-grid-yelbrus.jpg" alt="Картинка Эльбрус">
                 <div class="cards__caption">
                     <h2 class="cards__title">Гора Эльбрус</h2>
-                    <button class="cards__like" type="button"></button>
+                    <button aria-label="like-button" class="cards__like" type="button"></button>
                 </div>
             </article>
             <article class="cards__item">
                 <img class="cards__image" src="./images/cards/card-grid-dombay.jpg" alt="Картинка Домбай">
                 <div class="cards__caption">
                     <h2 class="cards__title">Домбай</h2>
-                    <button class="cards__like" type="button"></button>
+                    <button aria-label="like-button" class="cards__like" type="button"></button>
                 </div>
             </article>
             <article class="cards__item">
                 <img class="cards__image" src="./images/cards/card-grid-karachaevsk.jpg" alt="Картинка Карачаевск">
                 <div class="cards__caption">
                     <h2 class="cards__title">Карачаево-Ч...</h2>
-                    <button class="cards__like" type="button"></button>
+                    <button aria-label="like-button" class="cards__like" type="button"></button>
                 </div>
             </article>
         </section>
@@ -83,13 +84,13 @@
 
 
       <div class="popup popup_type_profile">
-        <div class="popup__content">
-          <button type="button" class="popup__close-button"></button>
+        <div class="popup__container">
+          <button aria-label="close-button" type="button" class="popup__close-button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form">
-            <input type="text" class="popup__input popup__input_profile_name" value="Жак-Ив Кусто">
-            <input type="text" class="popup__input popup__input_profile_job" value="Исследователь океана">
-            <button type="submit" class="popup__save-button">Сохранить</button>
+          <form class="popup__form" name="form">
+            <input type="text" class="popup__input popup__input_type_name" name="input" value="">
+            <input type="text" class="popup__input popup__input_type_job" name="input" value="">
+            <button aria-label="save-button" type="submit" class="popup__save-button">Сохранить</button>
           </form>
         </div>
       </div>
