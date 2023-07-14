@@ -35,6 +35,7 @@
 
         <section class="cards" aria-label="photocards">
             <article class="cards__item">
+                <button aria-label="cart-button" class="cards__trash" type="button"></button>
                 <img class="cards__image" src="./images/cards/card-grid-karachaevsk.jpg" alt="Картинка Карачаевск">
                 <div class="cards__caption">
                     <h2 class="cards__title">Карачаевск</h2>
@@ -42,6 +43,7 @@
                 </div>
             </article>
             <article class="cards__item">
+              <button aria-label="cart-button" class="cards__trash" type="button"></button>
                 <img class="cards__image" src="./images/cards/card-grid-yelbrus.jpg" alt="Картинка Эльбрус">
                 <div class="cards__caption">
                     <h2 class="cards__title">Гора Эльбрус</h2>
@@ -49,6 +51,7 @@
                 </div>
             </article>
             <article class="cards__item">
+              <button aria-label="cart-button" class="cards__trash" type="button"></button>
                 <img class="cards__image" src="./images/cards/card-grid-dombay.jpg" alt="Картинка Домбай">
                 <div class="cards__caption">
                     <h2 class="cards__title">Домбай</h2>
@@ -56,6 +59,7 @@
                 </div>
             </article>
             <article class="cards__item">
+              <button aria-label="cart-button" class="cards__trash" type="button"></button>
                 <img class="cards__image" src="./images/cards/card-grid-yelbrus.jpg" alt="Картинка Эльбрус">
                 <div class="cards__caption">
                     <h2 class="cards__title">Гора Эльбрус</h2>
@@ -63,6 +67,7 @@
                 </div>
             </article>
             <article class="cards__item">
+              <button aria-label="cart-button" class="cards__trash" type="button"></button>
                 <img class="cards__image" src="./images/cards/card-grid-dombay.jpg" alt="Картинка Домбай">
                 <div class="cards__caption">
                     <h2 class="cards__title">Домбай</h2>
@@ -70,6 +75,7 @@
                 </div>
             </article>
             <article class="cards__item">
+              <button aria-label="cart-button" class="cards__trash" type="button"></button>
                 <img class="cards__image" src="./images/cards/card-grid-karachaevsk.jpg" alt="Картинка Карачаевск">
                 <div class="cards__caption">
                     <h2 class="cards__title">Карачаево-Ч...</h2>
@@ -83,15 +89,37 @@
       </footer>
 
 
-      <div class="popup popup_type_profile">
+      <div class="popup popup_type_profile-edit">
         <div class="popup__container">
-          <button aria-label="close-button" type="button" class="popup__close-button"></button>
+          <button aria-label="close-button" type="button" class="popup__close-button popup__edit-button-close"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" name="form">
-            <input type="text" class="popup__input popup__input_type_name" name="input" value="">
-            <input type="text" class="popup__input popup__input_type_job" name="input" value="">
+          <form class="popup__form popup__edit-form" name="popupProfileForm">
+            <input type="text" class="popup__input popup__input_type_name" name="popupNameInput" value="">
+            <input type="text" class="popup__input popup__input_type_job" name="popupJobinput" value="">
             <button aria-label="save-button" type="submit" class="popup__save-button">Сохранить</button>
           </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_add-card">
+        <div class="popup__container">
+          <button aria-label="close-button" type="button" class="popup__close-button popup__add-button-close"></button>
+          <h2 class="popup__title popup__title_type_add">Новое место</h2>
+          <form class="popup__form popup__add-form" name="popupAddForm">
+            <input type="text" class="popup__input popup__card-name" placeholder="Название" name="popupNameCard" value="">
+            <input type="text" class="popup__input popup__card-link" placeholder="Ссылка на картинку" name="popupLinkCard" value="">
+            <button aria-label="save-button" type="submit" class="popup__save-button">Создать</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup popup_type_image">
+        <div class="popup__container-image">
+          <button aria-label="close-button" type="button" class="popup__close-button popup__image-button-close"></button>
+          <figure class="popup__card-figure">
+            <img class="popup__card-image" src="#" alt="#">
+            <figcaption class="popup__caption"></figcaption>
+          </figure>
         </div>
       </div>
     </div>
