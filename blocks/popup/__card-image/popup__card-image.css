@@ -2,3 +2,10 @@
     max-width: 75vw;
     max-height: 75vh;
 }
+
+@media screen and (max-width: 600px) {
+    .popup__card-image {
+        max-width: 240px;
+        max-height: 300px;
+    }
+}

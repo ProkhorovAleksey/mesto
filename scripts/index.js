@@ -1,5 +1,4 @@
-// Задаем переменные DOM
-const popup = document.querySelector('.popup') 
+// Задаем переменные DOM 
 const buttonOpenProfileEdit = document.querySelector('.profile__edit-button');
 const buttonOpenAddEdit = document.querySelector('.profile__add-button');
 const popupProfile = document.querySelector('.popup_type_profile-edit');
@@ -20,43 +19,55 @@ const cardsList = document.querySelector('.cards');
 const cardTemplate = document.querySelector('.cards__template').content;
 const cardTitle = document.querySelector('.cards__title');
 
-// Функция открытия POPUP EDIT
+// Функция открытия POPUP
 function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
-// Функция закрытия POPUP EDIT
+// Функция закрытия POPUP
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
 
-function defaultProfileSetting() {
+// Функция сохранения Настроек Профиля
+function defaultProfileSettings() {
     popupProfileNameInput.value = userName.textContent;
     popupProfileJobInput.value = jobName.textContent;
 }
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
-function popupEditFormSubmit(evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
-
-    // Получите значение полей jobInput и nameInput из свойства value
+function popupEditFormSubmitHandler(evt) {
+    evt.preventDefault();
     userName.textContent = popupProfileNameInput.value;
     jobName.textContent = popupProfileJobInput.value;
     closePopup(popupProfile);
-    // Выберите элементы, куда должны быть вставлены значения полей
-    // Вставьте новые значения с помощью textContent
 }
 
+// функция отправка новых карточек
 function popupAddFormSubmitHandler(evt) {
     evt.preventDefault();
     addCard(cardsList, createCard(popupAddCardName.value, popupAddCardLink.value));
-    closePopup(popupAddPhotos)
+    closePopup(popupAddPhotos);
 }
 
 function addCard(container, element) {
     container.prepend(element);
+}
+
+function addInfoImage(name, link) {
+    const linkImage = document.querySelector('.popup__card-image');
+    const nameImage = document.querySelector('.popup__caption');
+    nameImage.textContent = name;
+    nameImage.alt = name;
+    linkImage.src = link;
+}
+
+function toggleLike(event) {
+    event.target.classList.toggle('cards__like_active');
+}
+
+function removeCard(event) {
+    event.target.closest('.cards__item').remove();
 }
 
 function createCard(name, link) {
@@ -68,8 +79,8 @@ function createCard(name, link) {
     cardTitle.textContent = name;
     cardImage.src = link;
     cardImage.alt = name;
-    cardTrash.addEventListener('click', deleteCard);
-    cardLike.addEventListener('click', activateLike);
+    cardTrash.addEventListener('click', removeCard);
+    cardLike.addEventListener('click', toggleLike);
     cardImage.addEventListener('click', () => {
         addInfoImage(name, link),
         openPopup(popupImage)
@@ -77,11 +88,30 @@ function createCard(name, link) {
     return card;
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
+buttonOpenProfileEdit.addEventListener('click', () => {
+    openPopup(popupProfile),
+    defaultProfileSettings()
+});
 
-// Отслеживание событий для POPUP и кнопки сохранить
-buttonOpenProfileEdit.addEventListener('click', openPopup(popup));
-buttonClosePopupProfile.addEventListener('click', closePopup(popup));
-buttonOpenAddEdit.addEventListener('click', openPopupPhotos);
-formElement.addEventListener('submit', handleFormSubmit);
+buttonOpenAddEdit.addEventListener('click', () => {
+    openPopup(popupAddPhotos)
+});
+
+buttonClosePopupProfile.addEventListener('click', () => {
+    closePopup(popupProfile)
+});
+
+buttonCloseAddPhotos.addEventListener('click', () => {
+    closePopup(popupAddPhotos)
+});
+
+buttonClosePopupImage.addEventListener('click', () => {
+    closePopup(popupImage)
+});
+
+formEdit.addEventListener('submit', popupEditFormSubmitHandler);
+formAdd.addEventListener('submit', popupAddFormSubmitHandler);
+
+initialCards.forEach((item) => {
+    addCard(cardsList, createCard(item.name, item.link))
+});
