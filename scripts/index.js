@@ -1,6 +1,6 @@
 // Задаем переменные DOM 
-const openProfileEdit = document.querySelector('.profile__edit-button');
-const openAddEdit = document.querySelector('.profile__add-button');
+const openPopupProfileButton = document.querySelector('.profile__edit-button');
+const openPopupAddCardButton = document.querySelector('.profile__add-button');
 const popupProfile = document.querySelector('.popup_type_profile-edit');
 const popupAddPhotos = document.querySelector('.popup_type_add-card');
 const popupImage = document.querySelector('.popup_type_image')
@@ -93,12 +93,12 @@ closeButtons.forEach((button) => {
     button.addEventListener('click', () => closePopup(popup));
   });
 
-openProfileEdit.addEventListener('click', () => {
+openPopupProfileButton.addEventListener('click', () => {
     openPopup(popupProfile);
     setDefaultProfileFormValues();
 });
 
-openAddEdit.addEventListener('click', () => {
+openPopupAddCardButton.addEventListener('click', () => {
     openPopup(popupAddPhotos);
 });
 
@@ -106,5 +106,5 @@ formEdit.addEventListener('submit', handleEditFormSubmit);
 formAdd.addEventListener('submit', handleAddFormSubmit);
 
 initialCards.forEach((item) => {
-    addCard(cardsList, createCard(item.name, item.link))
+    addCard(cardsList, createCard(item.name, item.link));
 });
