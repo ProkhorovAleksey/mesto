@@ -34,13 +34,21 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', closePopupKeyEsc)
 }
-
+// Функция закрытия POPUP на клавишу ESC
 function closePopupKeyEsc(evt) {
     if(evt.key === 'Escape') {
         const popupCloseEscape = document.querySelector('.popup_opened');
         closePopup(popupCloseEscape)
     }
 }
+// Функция закрытия попапа на клик по свободному месту(оверлею)
+popups.forEach((popup) => {
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+    })
+})
 
 // Функция сохранения Настроек Профиля
 function setDefaultProfileFormValues() {
@@ -48,8 +56,7 @@ function setDefaultProfileFormValues() {
     popupProfileJobInput.value = jobName.textContent;
 }
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+// Функция отправка новых данных пользователя
 function handleEditFormSubmit(evt) {
     evt.preventDefault();
     userName.textContent = popupProfileNameInput.value;
@@ -71,7 +78,7 @@ function addCard(container, element) {
 
 function addInfoImage(name, link) {
     nameImage.textContent = name;
-    nameImage.alt = name;
+    linkImage.alt = name;
     linkImage.src = link;
 }
 
@@ -101,6 +108,7 @@ function createCard(name, link) {
     return card;
 }
 
+// Закрытие попапа на крестик универсальная функция
 closeButtons.forEach((button) => {
     // находим 1 раз ближайший к крестику попап 
     const popup = button.closest('.popup');
@@ -125,11 +133,3 @@ formAdd.addEventListener('submit', handleAddFormSubmit);
 initialCards.forEach((item) => {
     addCard(cardsList, createCard(item.name, item.link));
 });
-
-popups.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popup)
-        }
-    })
-})
