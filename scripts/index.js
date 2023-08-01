@@ -4,8 +4,9 @@ const openPopupProfileButton = document.querySelector('.profile__edit-button');
 const openPopupAddCardButton = document.querySelector('.profile__add-button');
 const popupProfile = document.querySelector('.popup_type_profile-edit');
 const popupAddPhotos = document.querySelector('.popup_type_add-card');
-const popupImage = document.querySelector('.popup_type_image')
-const closeButtons = document.querySelectorAll('.popup__close-button')
+const popupImage = document.querySelector('.popup_type_image');
+const closeButtons = document.querySelectorAll('.popup__close-button');
+const buttonSubmitAddForm = popupAddPhotos.querySelector('.popup__save-button');
 
 const formEdit = document.querySelector('.popup__edit-form');
 const formAdd = document.querySelector('.popup__add-form');
@@ -13,7 +14,7 @@ const formAdd = document.querySelector('.popup__add-form');
 const popupProfileNameInput = formEdit.querySelector('.popup__input_type_name');
 const popupProfileJobInput = formEdit.querySelector('.popup__input_type_job');
 const popupAddCardName = formAdd.querySelector('.popup__card-name');
-const popupAddCardLink = formAdd.querySelector('.popup__card-link')
+const popupAddCardLink = formAdd.querySelector('.popup__card-link');
 
 const linkImage = popupImage.querySelector('.popup__card-image');
 const nameImage = popupImage.querySelector('.popup__caption');
@@ -23,6 +24,19 @@ const jobName = document.querySelector('.profile__job');
 
 const cardsList = document.querySelector('.cards');
 const cardTemplate = document.querySelector('.cards__template').content;
+
+
+// Объект с классами по которым искать элементы
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__save-button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_visible'
+};
+// Передаем конфиг в функцию  
+enableValidation(validationConfig);
 
 // Функция открытия POPUP
 function openPopup(popup) {
@@ -70,6 +84,9 @@ function handleAddFormSubmit(evt) {
     addCard(cardsList, createCard(popupAddCardName.value, popupAddCardLink.value));
     closePopup(popupAddPhotos);
     formAdd.reset();
+    // При добавлении новых карточек сбрасывать состояние кнопки 
+    buttonSubmitAddForm.disabled = true;
+    buttonSubmitAddForm.classList.add('popup__save-button_disabled');
 }
 
 function addCard(container, element) {
