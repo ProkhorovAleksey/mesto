@@ -4,9 +4,9 @@
     max-height: 282px;
     object-fit: cover;
     cursor: pointer;
-    transition: opacity .3s ease;
+    transition: opacity .3s ease-in;
 }
 
 .cards__image:hover {
-    opacity: .8;
+    opacity: .6;
 }

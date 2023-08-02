@@ -26,18 +26,6 @@ const cardsList = document.querySelector('.cards');
 const cardTemplate = document.querySelector('.cards__template').content;
 
 
-// Объект с классами по которым искать элементы
-const validationConfig = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__save-button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_visible'
-};
-// Передаем конфиг в функцию  
-enableValidation(validationConfig);
-
 // Функция открытия POPUP
 function openPopup(popup) {
     popup.classList.add('popup_opened');
