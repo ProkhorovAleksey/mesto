@@ -7,7 +7,6 @@ const validationConfig = {
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__input-error_visible'
 };
-
 const showInputError = (form, input, validationConfig) => {
     input.classList.add(validationConfig.inputErrorClass);
     const span = form.querySelector(`.${input.id}-error`)
@@ -60,7 +59,7 @@ const setEventListener = (form, validationConfig) => {
     })
 };
 
-function enableValidation () {
+function enableValidation (validationConfig) {
     const forms = Array.from(document.querySelectorAll(validationConfig.formSelector));
     forms.forEach((form) => {
         setEventListener(form, validationConfig);
@@ -68,4 +67,4 @@ function enableValidation () {
 };
 
 // Передаем конфиг в функцию  
-enableValidation();
+enableValidation(validationConfig);
