@@ -52,7 +52,7 @@ popups.forEach((popup) => {
     })
 })
 
-// Функция сохранения Настроек Профиля
+// Функция сохранения настроек профиля
 function setDefaultProfileFormValues() {
     popupProfileNameInput.value = userName.textContent;
     popupProfileJobInput.value = jobName.textContent;
@@ -76,25 +76,26 @@ function handleAddFormSubmit(evt) {
     buttonSubmitAddForm.disabled = true;
     buttonSubmitAddForm.classList.add('popup__save-button_disabled');
 }
-
+// Функция добавления карточек в начало контейнера 
 function addCard(container, element) {
     container.prepend(element);
 }
-
+// Функиця добавления информации о изображении в ПОПАП
 function addInfoImage(name, link) {
     nameImage.textContent = name;
     linkImage.alt = name;
     linkImage.src = link;
 }
-
+// Функиця переключателя лайка на карточках
 function toggleLike(event) {
     event.target.classList.toggle('cards__like_active');
 }
-
+// Функция удаления карточек
 function removeCard(event) {
     event.target.closest('.cards__item').remove();
 }
 
+// Функция создания карточек
 function createCard(name, link) {
     const card = cardTemplate.cloneNode(true);
     const cardImage = card.querySelector('.cards__image');
