@@ -27,8 +27,8 @@ class Card {
         const imageCardLink = this._newCard.querySelector('.cards__image');
         imageCardLink.src = this._image;
 
-        const imageCardTitle = this._newCard.querySelector('.cards__image');
-        imageCardTitle.alt = this._title;
+        const imageCardName = this._newCard.querySelector('.cards__image');
+        imageCardName.alt = this._title;
 
         const titleCard = this._newCard.querySelector('.cards__title');
         titleCard.textContent = this._title;
