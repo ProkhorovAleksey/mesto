@@ -12,13 +12,14 @@ const popupImage = document.querySelector('.popup_type_image');
 const closePopupButtons = document.querySelectorAll('.popup__close-button');
 const buttonSubmitAddForm = popupAddPhotos.querySelector('.popup__save-button');
 
-const formEdit = document.querySelector('.popup__edit-form');
-const formAdd = document.querySelector('.popup__add-form');
+const formEditProfile = document.querySelector('.popup__edit-form');
+const formAddCard = document.querySelector('.popup__add-form');
 
-const popupProfileNameInput = formEdit.querySelector('.popup__input_type_name');
-const popupProfileJobInput = formEdit.querySelector('.popup__input_type_job');
-const popupAddCardName = formAdd.querySelector('.popup__card-name');
-const popupAddCardLink = formAdd.querySelector('.popup__card-link');
+const popupProfileNameInput = formEditProfile.querySelector('.popup__input_type_name');
+const popupProfileJobInput = formEditProfile.querySelector('.popup__input_type_job');
+
+const popupAddCardName = formAddCard.querySelector('.popup__card-name');
+const popupAddCardLink = formAddCard.querySelector('.popup__card-link');
 
 const popupCardImage = popupImage.querySelector('.popup__card-image');
 const popupCaption = popupImage.querySelector('.popup__caption');
@@ -27,7 +28,6 @@ const userName = document.querySelector('.profile__name');
 const jobName = document.querySelector('.profile__job');
 
 const cardsList = document.querySelector('.cards');
-
 
 // Функция добавления новой карточки через форму POPUP
 function createNewCard() {
@@ -58,15 +58,17 @@ function handleCardImage(name, link) {
 }
 
 // Функция открытия POPUP
-export function openPopup(popup) {
+function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupKeyEsc)
 }
+
 // Функция закрытия POPUP
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', closePopupKeyEsc)
 }
+
 // Функция закрытия POPUP на клавишу ESC
 function closePopupKeyEsc(evt) {
     if(evt.key === 'Escape') {
@@ -74,6 +76,7 @@ function closePopupKeyEsc(evt) {
         closePopup(popupCloseEscape)
     }
 }
+
 // Функция закрытия попапа на клик по свободному месту(оверлею)
 popups.forEach((popup) => {
     popup.addEventListener('mousedown', (evt) => {
@@ -102,10 +105,8 @@ function handleAddFormSubmit(evt) {
     evt.preventDefault();
     createNewCard();
     closePopup(popupAddPhotos);
-    formAdd.reset();
-    // При добавлении новых карточек сбрасывать состояние кнопки 
-    buttonSubmitAddForm.disabled = true;
-    buttonSubmitAddForm.classList.add('popup__save-button_disabled');
+    formAddCard.reset();
+    buttonSubmitAddForm.disabledSubmitButton()
 }
 
 // Закрытие попапа на крестик универсальная функция
@@ -127,11 +128,11 @@ openPopupAddCardButton.addEventListener('click', () => {
     openPopup(popupAddPhotos);
 });
 
-formEdit.addEventListener('submit', handleEditFormSubmit);
-formAdd.addEventListener('submit', handleAddFormSubmit);
+formEditProfile.addEventListener('submit', handleEditFormSubmit);
+formAddCard.addEventListener('submit', handleAddFormSubmit);
 
-const editProfileValidator = new FormValidator(config, formEdit);
-const addCardValidator = new FormValidator(config, formAdd);
+const editProfileValidator = new FormValidator(config, formEditProfile);
+const addCardValidator = new FormValidator(config, formAddCard);
 editProfileValidator.enableValidation();
 addCardValidator.enableValidation();
 renderElements();

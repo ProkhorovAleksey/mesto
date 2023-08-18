@@ -23,16 +23,31 @@ class Card {
         this._newCard.remove();
         this._newCard = null;
     }
-    _setEventListeners() {
-        this._newCard.querySelector('.cards__like').addEventListener('click', this._toggleLike);
-        this._newCard.querySelector('.cards__trash').addEventListener('click', () => { this._removeCard() });
-        this._newCard.querySelector('.cards__image').addEventListener('click', () => { this._handleCardImage(this._title, this._image)});
+    _setData() {
+        const imageCardLink = this._newCard.querySelector('.cards__image');
+        imageCardLink.src = this._image;
+
+        const imageCardTitle = this._newCard.querySelector('.cards__image');
+        imageCardTitle.alt = this._title;
+
+        const titleCard = this._newCard.querySelector('.cards__title');
+        titleCard.textContent = this._title;
     }
+
+    _setEventListeners() {
+        const likeButton = this._newCard.querySelector('.cards__like')
+        likeButton.addEventListener('click', this._toggleLike);
+
+        const trashButton = this._newCard.querySelector('.cards__trash')
+        trashButton.addEventListener('click', () => { this._removeCard() });
+        
+        const popupCardImage = this._newCard.querySelector('.cards__image')
+        popupCardImage.addEventListener('click', () => { this._handleCardImage(this._title, this._image)});
+    }
+
     generateCard() {
         this._newCard = this._getTemplate();
-        this._newCard.querySelector('.cards__image').src = this._image;
-        this._newCard.querySelector('.cards__image').alt = this._title;
-        this._newCard.querySelector('.cards__title').textContent = this._title;
+        this._setData();
         this._setEventListeners();
 
         return this._newCard;

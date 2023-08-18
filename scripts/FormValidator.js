@@ -18,7 +18,7 @@ class FormValidator {
     _setEventListener() {
         this._checkValidationButton()
         this._form.addEventListener('submit', () => {
-            this._disabledSubmitButton()
+            this.disabledSubmitButton()
         })
         this._inputList.forEach((input) => {
             input.addEventListener('input', () => {
@@ -27,6 +27,7 @@ class FormValidator {
             })
         })
     }
+
     _isValid(input) {
         if(!input.validity.valid) {
             this._showInputError(input)
@@ -34,6 +35,7 @@ class FormValidator {
             this._hideInputError(input)
         }
     }
+    
     _showInputError(input) {
         input.classList.add(this._inputErrorClass);
         this._form.querySelector(`.${input.id}-error`).textContent = input.validationMessage
@@ -50,7 +52,7 @@ class FormValidator {
         this._button.disabled = false;
     }
 
-    _disabledSubmitButton() {
+    disabledSubmitButton() {
         this._button.classList.add(this._inactiveButtonClass);
         this._button.disabled = true;
     }
@@ -59,7 +61,7 @@ class FormValidator {
         if(this._form.checkValidity()) {
             this._enableSubmitButton()
         } else {
-            this._disabledSubmitButton()
+            this.disabledSubmitButton()
         }
     }
 }
