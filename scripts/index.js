@@ -106,7 +106,7 @@ function handleAddFormSubmit(evt) {
     createNewCard();
     closePopup(popupAddPhotos);
     formAddCard.reset();
-    buttonSubmitAddForm.disabledSubmitButton()
+    addCardValidator.disabledSubmitButton()
 }
 
 // Закрытие попапа на крестик универсальная функция
