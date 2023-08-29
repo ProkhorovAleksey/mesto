@@ -11,7 +11,6 @@ const popupProfile = document.querySelector('.popup_type_profile-edit');
 const popupAddPhotos = document.querySelector('.popup_type_add-card');
 const popupImage = document.querySelector('.popup_type_image');
 const closePopupButtons = document.querySelectorAll('.popup__close-button');
-const buttonSubmitAddForm = popupAddPhotos.querySelector('.popup__save-button');
 
 const formEditProfile = document.querySelector('.popup__edit-form');
 const formAddCard = document.querySelector('.popup__add-form');
@@ -107,7 +106,7 @@ function handleAddFormSubmit(evt) {
     createNewCard();
     closePopup(popupAddPhotos);
     formAddCard.reset();
-    buttonSubmitAddForm.disabledSubmitButton()
+    addCardValidator.disabledSubmitButton()
 }
 
 // Закрытие попапа на крестик универсальная функция
