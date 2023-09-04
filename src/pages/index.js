@@ -9,7 +9,9 @@ import {
     userName,
     jobName,
     popupProfileNameInput,
-    popupProfileJobInput
+    popupProfileJobInput,
+    formAddCard,
+    formEditProfile
 } from '../scripts/utils/constants.js'
 
 import './index.css';
@@ -32,7 +34,6 @@ const userInfo = new UserInfo(userName, jobName);
 const popupAddForm = new PopupWithForm({
     popup: popupAddPhotos,
     handleSubmitForm: (formData) => {
-        createNewCard(formData)
         cards.addItem(createNewCard(formData))
     }
 })
@@ -40,8 +41,6 @@ const popupAddForm = new PopupWithForm({
 popupImageData.setEventListeners()
 popupEditProfile.setEventListeners()
 popupAddForm.setEventListeners()
-
-
 
 // Функция добавления новой карточки через форму POPUP
 function createNewCard(item) {
@@ -67,24 +66,31 @@ cards.renderer()
 
 openPopupProfileButton.addEventListener('click', () => {
     const { name, job } = userInfo.getUserInfo()
-    popupEditProfile.open()
     popupProfileNameInput.value = name
     popupProfileJobInput.value = job
+    formProfileValidation.checkValidationButton()
+    popupEditProfile.open()
 });
 
 openPopupAddCardButton.addEventListener('click', () => {
+    formAddCardValidation.checkValidationButton()
     popupAddForm.open()
 });
 
-const formValidators = {};
-const enableValidation = (config) => {
-    const formList = Array.from(document.querySelectorAll(config.formSelector))
-    formList.forEach((formElement) => {
-        const validity = new FormValidator(config, formElement)
-        const formName = formElement.getAttribute('name')
-        formValidators[formName] = validity;
-        validity.enableValidation()
-    });
-};
+const formAddCardValidation = new FormValidator(config, formAddCard)
+formAddCardValidation.enableValidation()
 
-enableValidation(config)
+const formProfileValidation = new FormValidator(config, formEditProfile)
+formProfileValidation.enableValidation()
+// const formValidators = {};
+// const enableValidation = (config) => {
+//     const formList = Array.from(document.querySelectorAll(config.formSelector))
+//     formList.forEach((formElement) => {
+//         const validity = new FormValidator(config, formElement)
+//         const formName = formElement.getAttribute('name')
+//         formValidators[formName] = validity;
+//         validity.enableValidation()
+//     });
+// };
+
+// enableValidation(config)

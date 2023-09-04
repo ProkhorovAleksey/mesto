@@ -16,14 +16,14 @@ class FormValidator {
     }
 
     _setEventListener() {
-        this._checkValidationButton()
+        this.checkValidationButton()
         this._form.addEventListener('submit', () => {
-            this.disabledSubmitButton()
+            this._disabledSubmitButton()
         })
         this._inputList.forEach((input) => {
             input.addEventListener('input', () => {
                 this._isValid(input);
-                this._checkValidationButton()
+                this.checkValidationButton()
             })
         })
     }
@@ -47,21 +47,32 @@ class FormValidator {
         this._form.querySelector(`.${input.id}-error`).textContent = ''
         this._form.querySelector(`.${input.id}-error`).classList.remove(this._errorClass)
     }
+    // resetValidation() {
+    //     if(this._hasInvalidInput()) {
+    //         this._disabledSubmitButton()
+    //     }else {
+    //         this._enableSubmitButton()
+    //     }
+    // }
+    _hasInvalidInput() {
+        return this._inputList.some((input) => !input.validity.valid)
+    }
     _enableSubmitButton() {
         this._button.classList.remove(this._inactiveButtonClass);
         this._button.disabled = false;
     }
 
-    disabledSubmitButton() {
+    _disabledSubmitButton() {
+        console.log('button disactive')
         this._button.classList.add(this._inactiveButtonClass);
         this._button.disabled = true;
     }
 
-    _checkValidationButton() {
-        if(this._form.checkValidity()) {
+    checkValidationButton() {
+        if(!this._hasInvalidInput()) {
             this._enableSubmitButton()
         } else {
-            this.disabledSubmitButton()
+            this._disabledSubmitButton()
         }
     }
 }
