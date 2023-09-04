@@ -47,13 +47,7 @@ class FormValidator {
         this._form.querySelector(`.${input.id}-error`).textContent = ''
         this._form.querySelector(`.${input.id}-error`).classList.remove(this._errorClass)
     }
-    // resetValidation() {
-    //     if(this._hasInvalidInput()) {
-    //         this._disabledSubmitButton()
-    //     }else {
-    //         this._enableSubmitButton()
-    //     }
-    // }
+    
     _hasInvalidInput() {
         return this._inputList.some((input) => !input.validity.valid)
     }
@@ -63,7 +57,6 @@ class FormValidator {
     }
 
     _disabledSubmitButton() {
-        console.log('button disactive')
         this._button.classList.add(this._inactiveButtonClass);
         this._button.disabled = true;
     }
